@@ -1638,13 +1638,13 @@ header .header-logo a {
 	width: 100%;
 	height: 100%;
 	/*background-image: url(../images/intro-bg.jpg);*/
-	background-image: url(../images/Sharif/sharif.jpg);
+	background-image: url(../images/Sharif/2.jpg);
 	background-repeat: no-repeat;
 	background-position: center;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	background-size: cover;
-	min-height: 804px;
+	min-height: 810px;
 	position: relative;
 }
 
