@@ -163,19 +163,43 @@
 	   var statSection = $("#stats"),
 	   stats           = $(".stat-count");
 
+	   // Initialize: Get target values from data-target attribute and ensure starting at 0
+	   stats.each(function() {
+		   var $this = $(this);
+		   var targetValue = parseInt($this.data('target')) || 0;
+		   
+		   // Store target value
+		   $this.data('target-value', targetValue);
+		   
+		   // Ensure it starts at 0
+		   $this.text('0');
+	   });
+
 	   statSection.waypoint({
 	   	handler: function(direction) {
 
 	      	if (direction === "down") { 
 				   stats.each(function () {
 					   var $this = $(this);
+					   
+					   // Skip if already animated
+					   if ($this.data('animated')) {
+						   return;
+					   }
+					   
+					   $this.data('animated', true);
+					   var targetValue = $this.data('target-value') || parseInt($this.data('target')) || 0;
 
-					   $({ Counter: 0 }).animate({ Counter: $this.text() }, {
+					   // Animate from 0 to target value
+					   $({ Counter: 0 }).animate({ Counter: targetValue }, {
 					   	duration: cfg.statsDuration,
 					   	easing: 'swing',
 					   	step: function (curValue) {
 					      	$this.text(Math.ceil(curValue));
-					    	}
+					    	},
+					   	complete: function() {
+					   		$this.text(targetValue); // Ensure final value is exact
+					   	}
 					  	});
 					});
 	       	} 
@@ -183,7 +207,7 @@
 	       	// trigger once only
 	       	this.destroy(); 
 			},	
-			offset: "90%"	
+			offset: "75%"	// Trigger when section is 75% visible
 		});
 
   	};
