@@ -1679,7 +1679,7 @@ header .header-logo a {
 
 .home-content-tablecell {
 	display: table-cell;
-	vertical-align: bottom;
+	vertical-align: top;
 	padding-top: 80px;
 	z-index: 500;
 }
