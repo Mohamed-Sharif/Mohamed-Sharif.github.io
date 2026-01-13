@@ -97,3 +97,4 @@ After adding analytics:
 2. Check the browser console (F12) for any errors
 3. Use Google Analytics "Realtime" view to see if it's working
 4. Wait 24-48 hours for full data to appear
+
